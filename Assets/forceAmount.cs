@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class forceAmount : MonoBehaviour
+public class ApplyWeightForce : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private ArticulationBody articulationBody;
+
+    public float massInKg = 1f;
+
+    private float gravity = 9.81f;
+
     void Start()
     {
-        
+
+        articulationBody = GetComponent<ArticulationBody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        ApplyWeight();
+    }
+
+    // Function to apply weight force based on mass
+    void ApplyWeight()
+    {
+
+        float weightForce = massInKg * gravity;
+        articulationBody.AddForce(Vector3.down * weightForce);
     }
 }
