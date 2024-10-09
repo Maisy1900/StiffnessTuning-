@@ -8,6 +8,9 @@ public class ApplyWeightForce : MonoBehaviour
 
     private float gravity = 9.81f;
 
+    public string type = "up";
+    Vector3 force; 
+
     void Start()
     {
 
@@ -17,6 +20,7 @@ public class ApplyWeightForce : MonoBehaviour
     void Update()
     {
         ApplyWeight();
+        getForce(type);
     }
 
     // Function to apply weight force based on mass
@@ -24,6 +28,25 @@ public class ApplyWeightForce : MonoBehaviour
     {
 
         float weightForce = massInKg * gravity;
-        articulationBody.AddForce(Vector3.down * weightForce);
+        articulationBody.AddForce(Vector3.down * weightForce);   
+    }
+    void getForce(string type)
+    {
+        if( type == "up")
+        {
+            force = Vector3.up;
+        }
+        if( type == "down")
+        {
+            force = Vector3.down;
+        }
+        if(type == "left")
+        {
+            force = Vector3.left;
+        }
+        if(type == "right")
+        {
+            force = Vector3.up;
+        }
     }
 }
