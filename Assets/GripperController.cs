@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GripperController : MonoBehaviour
@@ -13,11 +14,13 @@ public class GripperController : MonoBehaviour
 
     void Start()
     {
+        print("Hello");
         cube.useGravity = false;
     }
 
     void Update()
     {
+        print("joint force left" + leftGripper.jointForce[0] + "joint force right" + rightGripper.jointForce[0]);
         if (!hasGripped)
         {
             // Move the left and right grippers towards the cube
@@ -55,9 +58,7 @@ public class GripperController : MonoBehaviour
     {
         // When the object is gripped, enable gravity and set the object as a child of one of the grippers
         hasGripped = true;
+        Debug.Log("Gravity enabled");
         cube.useGravity = true;
-
-        // Optionally attach the object to one of the grippers to simulate it being held
-        cube.transform.SetParent(leftGripper.transform);
     }
 }
