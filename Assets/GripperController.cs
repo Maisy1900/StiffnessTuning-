@@ -5,7 +5,9 @@ public class GripperController : MonoBehaviour
 {
     public ArticulationBody leftGripper;  
     public ArticulationBody rightGripper; 
-    public Rigidbody cube; 
+    public Rigidbody cube;
+
+    public Transform driverJoint;
 
     // Force parameters
     public float gripForceThreshold = 4.905f; // Force needed to grip the object
@@ -14,7 +16,6 @@ public class GripperController : MonoBehaviour
 
     void Start()
     {
-        print("Hello");
         cube.useGravity = false;
     }
 
@@ -41,8 +42,10 @@ public class GripperController : MonoBehaviour
         ArticulationDrive rightDrive = rightGripper.xDrive;
 
         // Update the target positions to move closer to the cube
-        leftDrive.target -= gripSpeed;
-        rightDrive.target += gripSpeed;
+        //leftDrive.target -= gripSpeed;
+        //rightDrive.target += gripSpeed; // Orange cuboid z-axis rotation is now the new target of the right/left drive 
+        rightDrive.target = driverJoint.eulerAngles.z;
+        print(driverJoint.eulerAngles.z);
 
         // Apply the updated drive settings to each gripper
         leftGripper.xDrive = leftDrive;
