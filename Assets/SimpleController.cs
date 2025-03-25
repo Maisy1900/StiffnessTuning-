@@ -63,7 +63,7 @@ public class SimpleController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 currentVelocity = cube.velocity;
+        Vector3 currentVelocity = cube.linearVelocity;
 
         // check if movement has started
         if (!hasStarted && currentVelocity.magnitude > 0)
@@ -147,8 +147,8 @@ public class SimpleController : MonoBehaviour
     void RecordResults(float normTime)
     {
         //velocity
-        Vector3 currentGripperVelocity = tip.velocity;
-        Vector3 currentCubeVelocity = cube.velocity;
+        Vector3 currentGripperVelocity = tip.linearVelocity;
+        Vector3 currentCubeVelocity = cube.linearVelocity;
         Vector3 currentGripperAngularVelocity = tip.angularVelocity;
         //acceleration
         Vector3 gripperAcceleration = (currentGripperVelocity - lastGripperVelocity) / Time.fixedDeltaTime;
@@ -167,9 +167,9 @@ public class SimpleController : MonoBehaviour
 
         //record 
         Vector3 cubePos = cube.transform.position;
-        Vector3 cubeVelocity = cube.velocity;
+        Vector3 cubeVelocity = cube.linearVelocity;
         float time = normTime;
-        Vector3 griperVel = tip.velocity; 
+        Vector3 griperVel = tip.linearVelocity; 
         Vector3 gripperPos = tip.transform.position;
         //store the data
 

@@ -23,7 +23,7 @@ public class ResetCube : MonoBehaviour
         {
             transform.position = default_position;
             transform.rotation = default_rotation;
-            r.velocity = Vector3.zero;
+            r.linearVelocity = Vector3.zero;
             r.angularVelocity = Vector3.zero;
         }
         
